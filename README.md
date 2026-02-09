@@ -10,14 +10,12 @@ A powerful AI-driven platform that allows you to generate and compare UI compone
 - **Interactive Sandbox**: Live editable previews for every generated component powered by `@codesandbox/sandpack`.
 - **Iterative Refinement**: Chat with the AI to modify existing code. Say "Make the button red" or "Add a label", and it will update the specific component.
 - **Persistent State**: Seamlessly toggle between **Code** and **Preview** views without losing your sandbox state or refreshing.
-- **Data Persistence**: Automatic logging of all prompts and generated code in **MongoDB**.
 - **Modern Tech Stack**: Built with Next.js 16 (App Router), TypeScript, and Gemini 1.5 Flash.
 
 ## 🛠️ Tech Stack
 
 - **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
 - **AI Engine**: [Google Gemini 1.5 Flash](https://deepmind.google/technologies/gemini/)
-- **Database**: [MongoDB](https://www.mongodb.com/) (via Mongoose)
 - **Component Libraries**:
   - [Shadcn UI](https://ui.shadcn.com/) (Tailwind CSS)
   - [Material UI (MUI)](https://mui.com/)
@@ -30,7 +28,6 @@ A powerful AI-driven platform that allows you to generate and compare UI compone
 ### Prerequisites
 
 - Node.js 18+ 
-- MongoDB (Running locally or an Atlas URI)
 - Google Gemini API Key
 
 ### Installation
@@ -50,7 +47,6 @@ A powerful AI-driven platform that allows you to generate and compare UI compone
    Create a `.env.local` file in the root directory and add your keys:
    ```env
    GEMINI_API_KEY=your_gemini_api_key_here
-   MONGODB_URI=mongodb://localhost:27017/ai-generator
    ```
 
 4. **Run the development server**:
@@ -71,20 +67,10 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## 🌐 Deployment (Vercel)
 
-### 1. MongoDB Atlas Setup
-Since Vercel is a serverless platform, it cannot connect to your local `localhost:27017` database.
-1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
-2. Create a free shared cluster.
-3. In "Network Access", allow access from "0.0.0.0/0" (Vercel IP addresses change dynamically).
-4. Get your connection string (e.g., `mongodb+srv://<user>:<password>@cluster0.mongodb.net/ai-generator`).
-
-### 2. Deploy to Vercel
 1. Push your latest code to GitHub.
 2. Go to [Vercel](https://vercel.com/) and click **Add New Project**.
 3. Import your repository.
-4. In the **Environment Variables** section, add:
-   - `GEMINI_API_KEY`: Your Google Gemini key.
-   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+4. In the **Environment Variables** section, add `GEMINI_API_KEY`.
 5. Click **Deploy**.
 
 ## 📄 License

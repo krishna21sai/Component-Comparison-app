@@ -1,8 +1,6 @@
 import { NextResponse } from 'next/server';
 // Build-trigger to ensure latest code is deployed
 import { GoogleGenerativeAI } from '@google/generative-ai';
-import dbConnect from '@/lib/mongodb';
-import Generation from '@/models/Generation';
 
 // Initialize Gemini API
 const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY || '');
@@ -260,23 +258,6 @@ export async function POST(request: Request) {
       .replace(/```jsx\n?/g, '')
       .replace(/```\n?/g, '')
       .trim();
-
-    // Store in MongoDB
-    try {
-      if (process.env.MONGODB_URI) {
-        console.log('📝 Saving to MongoDB...');
-        await dbConnect();
-        const saved = await Generation.create({
-          prompt,
-          library,
-          code: generatedCode,
-          currentCode: currentCode || undefined
-        });
-        console.log('✅ Stored in MongoDB:', saved._id);
-      }
-    } catch (dbError) {
-      console.error('❌ MongoDB Storage Error:', dbError);
-    }
 
     return NextResponse.json({ code: generatedCode });
 
