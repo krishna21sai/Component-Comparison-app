@@ -68,6 +68,25 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 4. Use the **Code** toggle (Code icon) to view and copy the implementation.
 5. Provide follow-up prompts to refine the generated components.
 
+
+## 🌐 Deployment (Vercel)
+
+### 1. MongoDB Atlas Setup
+Since Vercel is a serverless platform, it cannot connect to your local `localhost:27017` database.
+1. Create a free account at [MongoDB Atlas](https://www.mongodb.com/cloud/atlas).
+2. Create a free shared cluster.
+3. In "Network Access", allow access from "0.0.0.0/0" (Vercel IP addresses change dynamically).
+4. Get your connection string (e.g., `mongodb+srv://<user>:<password>@cluster0.mongodb.net/ai-generator`).
+
+### 2. Deploy to Vercel
+1. Push your latest code to GitHub.
+2. Go to [Vercel](https://vercel.com/) and click **Add New Project**.
+3. Import your repository.
+4. In the **Environment Variables** section, add:
+   - `GEMINI_API_KEY`: Your Google Gemini key.
+   - `MONGODB_URI`: Your MongoDB Atlas connection string.
+5. Click **Deploy**.
+
 ## 📄 License
 
 This project is licensed under the MIT License.
