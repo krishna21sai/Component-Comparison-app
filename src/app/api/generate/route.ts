@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+// Build-trigger to ensure latest code is deployed
 import { GoogleGenerativeAI } from '@google/generative-ai';
 import dbConnect from '@/lib/mongodb';
 import Generation from '@/models/Generation';
