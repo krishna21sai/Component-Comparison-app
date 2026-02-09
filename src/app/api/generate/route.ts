@@ -235,7 +235,7 @@ export async function POST(request: Request) {
     }
 
     // Get the model
-    const model = genAI.getGenerativeModel({ model: 'gemini-2.5-flash' });
+    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' });
 
     // Generate content
     const promptGenerator = LIBRARY_PROMPTS[library as keyof typeof LIBRARY_PROMPTS];
